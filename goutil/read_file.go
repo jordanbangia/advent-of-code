@@ -7,7 +7,7 @@ import (
 )
 
 func ReadFile(fileName string) ([]string, error) {
-	file, err := os.Open("input.txt")
+	file, err := os.Open(fileName)
 	if err != nil {
 		fmt.Println(err)
 		return []string{}, err
