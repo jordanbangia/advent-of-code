@@ -19,20 +19,6 @@ func main() {
 	_ = solve2(input)
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
 type Line struct {
 	x1, y1, x2, y2 int
 }
@@ -40,15 +26,15 @@ type Line struct {
 func (l Line) points() []string {
 	points := []string{}
 	if l.x1 == l.x2 {
-		start := min(l.y1, l.y2)
-		end := max(l.y1, l.y2)
+		start := goutil.Min(l.y1, l.y2)
+		end := goutil.Max(l.y1, l.y2)
 
 		for i := start; i <= end; i++ {
 			points = append(points, key(l.x1, i))
 		}
 	} else if l.y1 == l.y2 {
-		start := min(l.x1, l.x2)
-		end := max(l.x1, l.x2)
+		start := goutil.Min(l.x1, l.x2)
+		end := goutil.Max(l.x1, l.x2)
 
 		for i := start; i <= end; i++ {
 			points = append(points, key(i, l.y1))

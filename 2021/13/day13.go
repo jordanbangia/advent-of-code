@@ -97,21 +97,14 @@ func key(x, y int) string {
 	return fmt.Sprintf("%d,%d", x, y)
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
 func printCoords(coords map[string]bool) {
 	maxX := -1
 	maxY := -1
 
 	for c := range coords {
 		x, y := splitCoords(c)
-		maxX = max(x, maxX)
-		maxY = max(y, maxY)
+		maxX = goutil.Max(x, maxX)
+		maxY = goutil.Max(y, maxY)
 	}
 
 	outs := make([]string, maxY+1)
