@@ -1,0 +1,1 @@
+I wrote some intial code and it wasn't working due to a wrong validity check.  I fixed it and it was still off by one.  Couldn't get part 2 to work.
