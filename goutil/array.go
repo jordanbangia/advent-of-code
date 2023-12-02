@@ -7,3 +7,11 @@ func ReverseStrArray(ss []string) []string {
 	}
 	return ss
 }
+
+func Sum(a []int) int {
+	s := 0
+	for _, k := range a {
+		s += k
+	}
+	return s
+}
