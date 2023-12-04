@@ -56,31 +56,5 @@ func lineToNum(l string) int {
 	// eighthree should be eight
 	// nineight should be nine
 
-	firstChecks := map[string]rune{
-		"oneight":   '1',
-		"twone":     '2',
-		"threeight": '3',
-		"four":      '4',
-		"five":      '5',
-		"six":       '6',
-		"sevenine":  '7',
-		"eightwo":   '8',
-		"eighthree": '8',
-		"nineight":  '9',
-	}
-
-	secondChecks := map[string]rune{}
-
-	first := '0'
-	last := '0'
-	for _, c := range l {
-		if unicode.IsDigit(c) {
-			if first == '0' {
-				first = c
-			}
-			last = c
-		}
-	}
-
-	return goutil.Atoi(string([]rune{first, last}))
+	return goutil.Atoi(string([]rune{'i', 'f'}))
 }
