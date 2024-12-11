@@ -120,3 +120,10 @@ func NewDirList(directionOrder []Direction, startDirection Direction) *DirList {
 
 	return &DirList{l: directionOrder, curr: startIndex}
 }
+
+type Grid[T any] struct {
+	G map[string]T
+
+	MaxRow int
+	MaxCol int
+}
