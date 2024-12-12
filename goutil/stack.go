@@ -1,25 +1,27 @@
 package goutil
 
-type Stack []string
-
-// IsEmpty: check if stack is empty
-func (s *Stack) IsEmpty() bool {
-	return len(*s) == 0
+type Stack[T any] struct {
+	keys []T
 }
 
-// Push a new value onto the stack
-func (s *Stack) Push(v string) {
-	*s = append(*s, v) // Simply append the new value to the end of the stack
+func NewStack[T any]() *Stack[T] {
+	return &Stack[T]{nil}
 }
 
-// Remove and return top element of stack. Return false if stack is empty.
-func (s *Stack) Pop() (string, bool) {
+func (s *Stack[T]) Push(key T) {
+	s.keys = append(s.keys, key)
+}
+
+func (s *Stack[T]) IsEmpty() bool {
+	return len(s.keys) == 0
+}
+
+// Pop returns T and true if a value exists, false if the stack is empty
+func (s *Stack[T]) Pop() (T, bool) {
+	var x T
 	if s.IsEmpty() {
-		return "", false
-	} else {
-		index := len(*s) - 1   // Get the index of the top most element.
-		element := (*s)[index] // Index into the slice and obtain the element.
-		*s = (*s)[:index]      // Remove it from the stack by slicing it off.
-		return element, true
+		return x, false
 	}
+	x, s.keys = s.keys[len(s.keys)-1], s.keys[:len(s.keys)-1]
+	return x, true
 }
