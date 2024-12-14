@@ -1,9 +1,21 @@
 package goutil
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func Key(i, j int) string {
 	return fmt.Sprintf("%d_%d", i, j)
+}
+
+func AKey(i []int) string {
+	return Key(i[0], i[1])
+}
+
+func SplitKey(k string) (int, int) {
+	parts := strings.Split(k, "_")
+	return Atoi(parts[0]), Atoi(parts[1])
 }
 
 // assumes a grid where (0,0) is top left
