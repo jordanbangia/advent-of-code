@@ -139,3 +139,17 @@ type Grid[T any] struct {
 	MaxRow int
 	MaxCol int
 }
+
+func MoveVals(d Direction) (int, int) {
+	switch d {
+	case Up:
+		return -1, 0
+	case Right:
+		return 0, 1
+	case Down:
+		return 1, 0
+	case Left:
+		return 0, -1
+	}
+	return -1, -1
+}
