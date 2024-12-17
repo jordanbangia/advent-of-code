@@ -36,6 +36,29 @@ func NewSolution(part1, part2 func(inputText []string) (int, error)) Solution {
 	}
 }
 
+type oneFuncSolution struct {
+	f func([]string) (int, int, error)
+
+	p1 int
+	p2 int
+}
+
+func (o *oneFuncSolution) Part1(inputText []string) (int, error) {
+	p1, p2, err := o.f(inputText)
+	o.p2 = p2
+	return p1, err
+}
+
+func (o *oneFuncSolution) Part2(inputText []string) (int, error) {
+	return o.p2, nil
+}
+
+func NewOneFuncSolution(soln func(inputText []string) (int, int, error)) Solution {
+	return &oneFuncSolution{
+		f: soln,
+	}
+}
+
 func RunSolution(s Solution, onlyTest bool) {
 	input, _ := ReadFile("test.txt")
 

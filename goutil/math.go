@@ -28,3 +28,14 @@ func Dist(a, b []int) float64 {
 	y := (a[1] - b[1]) * (a[1] - b[1])
 	return math.Sqrt(float64(x + y))
 }
+
+func PosMod(x, d int) int {
+	x = x % d
+	if x >= 0 {
+		return x
+	}
+	if d < 0 {
+		return x - d
+	}
+	return x + d
+}
