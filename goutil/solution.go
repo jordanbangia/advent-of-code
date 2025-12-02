@@ -2,6 +2,7 @@ package goutil
 
 import (
 	"errors"
+	"flag"
 	"fmt"
 )
 
@@ -79,4 +80,45 @@ func RunSolution(s Solution, onlyTest bool) {
 
 	fmt.Print("Puzzle solutions:\n")
 	PrintSolution(p1, p2)
+}
+
+func SolutionMain(s Solution) {
+	var testOnly = flag.Bool("test", false, "run test input only")
+	var realOnly = flag.Bool("real", false, "run solution input only")
+	var runPart1 = flag.Bool("p1", false, "run part 1 only")
+	var runPart2 = flag.Bool("p2", false, "run part 2 only")
+	flag.Parse()
+
+	p1 := *runPart1 || (!*runPart1 && !*runPart2)
+	p2 := *runPart2 || (!*runPart1 && !*runPart2)
+
+	testInput := *testOnly || (!*testOnly && !*realOnly)
+	realInput := *realOnly || (!*testOnly && !*realOnly)
+
+	if testInput {
+		fmt.Println("Test solutions:")
+		input, _ := ReadFile("test.txt")
+		if p1 {
+			p1Result, _ := s.Part1(input)
+			fmt.Println("Part 1: ", p1Result)
+		}
+		if p2 {
+			p2Result, _ := s.Part2(input)
+			fmt.Println("Part 2: ", p2Result)
+		}
+	}
+
+	if realInput {
+		fmt.Println("Puzzle solutions:")
+		input, _ := ReadFile("input.txt")
+		if p1 {
+			p1Result, _ := s.Part1(input)
+			fmt.Println("Part 1: ", p1Result)
+		}
+		if p2 {
+			p2Result, _ := s.Part2(input)
+			fmt.Println("Part 2: ", p2Result)
+		}
+	}
+
 }
