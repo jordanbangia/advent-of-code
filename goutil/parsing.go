@@ -2,7 +2,7 @@ package goutil
 
 import "strconv"
 
-func Atoi(s string) int {
-	r, _ := strconv.Atoi(s)
+func Atoi[T string | rune | byte](s T) int {
+	r, _ := strconv.Atoi(string(s))
 	return r
 }
