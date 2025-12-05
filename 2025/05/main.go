@@ -37,10 +37,8 @@ func part1(inputText []string) (int, error) {
 			}
 			r := strings.Split(l, "-")
 			freshIngredients = append(freshIngredients, []int{goutil.Atoi(r[0]), goutil.Atoi(r[1])})
-			// println(freshIngredients[len(freshIngredients)-1][0])
 		} else {
 			ingredientIsFresh := isIngredientFresh(goutil.Atoi(l))
-			// println(goutil.Atoi(l), ingredientIsFresh)
 			if ingredientIsFresh {
 				freshIngredientsCount++
 			}
