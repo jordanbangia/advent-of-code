@@ -2,4 +2,41 @@
 //
 // For more documentation on how to configure debug tasks,
 // see: https://zed.dev/docs/debugger
-[]
+[
+    {
+        "label": "Test P1",
+        "adapter": "Delve",
+        "program": ".",
+        "request": "launch",
+        "mode": "debug",
+        "args": ["-test", "-p1"],
+        "cwd": "$ZED_DIRNAME"
+    },
+    {
+        "label": "Test P2",
+        "adapter": "Delve",
+        "program": "$ZED_FILE",
+        "request": "launch",
+        "mode": "debug",
+        "args": ["-test", "-p2"],
+        "cwd": "$ZED_DIRNAME"
+    },
+    {
+        "label": "Real P1",
+        "adapter": "Delve",
+        "program": "$ZED_FILE",
+        "request": "launch",
+        "mode": "debug",
+        "args": ["-real", "-p1"],
+        "cwd": "$ZED_DIRNAME"
+    },
+    {
+        "label": "Real P2",
+        "adapter": "Delve",
+        "program": "$ZED_FILE",
+        "request": "launch",
+        "mode": "debug",
+        "args": ["-real", "-p2"],
+        "cwd": "$ZED_DIRNAME"
+    }
+]

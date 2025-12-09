@@ -24,9 +24,15 @@ func Abs(i int) int {
 }
 
 func Dist(a, b []int) float64 {
-	x := (a[0] - b[0]) * (a[0] - b[0])
-	y := (a[1] - b[1]) * (a[1] - b[1])
-	return math.Sqrt(float64(x + y))
+	if len(a) != len(b) {
+		panic("mismatched slices")
+	}
+
+	d := float64(0)
+	for i := 0; i < len(a); i++ {
+		d += math.Pow(float64(a[i]-b[i]), 2)
+	}
+	return math.Sqrt(d)
 }
 
 func PosMod(x, d int) int {

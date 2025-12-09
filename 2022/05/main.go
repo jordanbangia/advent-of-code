@@ -43,7 +43,7 @@ func part2(input []string) {
 		from := goutil.Atoi(parts[3]) - 1
 		to := goutil.Atoi(parts[5]) - 1
 
-		mid := goutil.Stack([]string{})
+		mid := goutil.NewStack[string]()
 		for c := 0; c < moveCount; c++ {
 			ele, _ := stacks[from].Pop()
 			mid.Push(ele)

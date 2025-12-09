@@ -21,3 +21,11 @@ func Duplicate[T any](src []T) []T {
 	copy(dst, src)
 	return dst
 }
+
+func DuplicateArrayOfArray[T any](src [][]T) [][]T {
+	dst := make([][]T, len(src))
+	for i := range src {
+		dst[i] = Duplicate(src[i])
+	}
+	return dst
+}
